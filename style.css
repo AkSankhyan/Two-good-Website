@@ -18,6 +18,72 @@ body{
   background-color: #f7f7f7;
 }
 
+#nav{
+  /* height: 100px; */
+  width: 100%;
+  /* background-color: burlywood; */
+  position: fixed;
+  z-index: 99;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+#nav-part1{
+  /* background-color: red; */
+  height: 82px;
+  overflow: hidden;
+}
+
+#nav-part1 svg{
+  display: block;
+}
+
+#nav #nav-part2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  
+}
+
+#nav-part2 #links a{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0 20px;
+
+}
+
+#links{
+  padding: 10px;
+}
+
+#nav-part2 #icons i{
+  font-size: 18px;
+  margin: 0 20px;
+  font-weight: 100;
+}
+
+#icons{
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #f7f7f7;
+}
+
+#cursor{
+  width: 150px;
+  height: 150px;
+  background-color: blanchedalmond;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%) scale(0);
+  /* transform: scale(0); */
+}
+
 #page1{
   min-height: 100vh;
   position: relative;
@@ -112,7 +178,7 @@ body{
   position: relative;
   display: flex;
   align-items: center;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
@@ -134,6 +200,70 @@ body{
 }
 
 @media (max-width:600px){
+
+  #nav{
+    /* height: 100px; */
+    width: 100%;
+    /* background-color: burlywood; */
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  
+  #nav-part1{
+    /* background-color: red; */
+    height: 62px;
+    overflow: hidden;
+  }
+  
+  #nav-part1 svg{
+    display: block;
+    height: 67px;
+    width: 80px;
+  }
+
+  #nav #twogoodlogo{
+    height: 40px;
+    margin-left: -20px;
+  }
+  
+  #nav #nav-part2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    
+  }
+  
+  #links{
+    padding: 10px;
+    display:none;
+  }
+  
+  #nav-part2 #icons i{
+    font-size: 15px;
+    margin: 0 20px;
+    font-weight: 100;
+  }
+  
+  #icons{
+    padding: 7px;
+    border-radius: 50px;
+    background-color: #f7f7f7;
+  }
+  
+  #cursor{
+    width: 150px;
+    height: 150px;
+    background-color: blanchedalmond;
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%) scale(0);
+    /* transform: scale(0); */
+  }
 
   #page1 h1{
     font-size: 15.5vw;
@@ -202,5 +332,33 @@ body{
     /* left: 50%; */
     /* transform: translate(-50%,-50%); */
     background-color: palegoldenrod;
+  }
+
+  #page3 {
+    min-height: 120vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* background-color: aliceblue; */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  
+  .child{
+    height: 54vh;
+    width: 88vw;
+    /* background-color: red; */
+    /* border: 2px solid black; */
+    position: relative;
+    padding: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .child img{
+    height: 100%;
+  
   }
 }

@@ -1,7 +1,79 @@
-const scroll = new LocomotiveScroll({
-  el: document.querySelector('#main'),
-  smooth: true
+// const scroll = new LocomotiveScroll({
+//   el: document.querySelector('#main'),
+//   smooth: true
+// });
+
+function locomotiveAnimation(){
+  gsap.registerPlugin(ScrollTrigger);
+
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector("#main"),
+  smooth: true,
+
+  // for tablet smooth
+  tablet: { smooth: true },
+
+  // for mobile
+  smartphone: { smooth: true }
 });
+locoScroll.on("scroll", ScrollTrigger.update);
+
+ScrollTrigger.scrollerProxy("#main", {
+  scrollTop(value) {
+    return arguments.length
+      ? locoScroll.scrollTo(value, 0, 0)
+      : locoScroll.scroll.instance.scroll.y;
+  },
+  getBoundingClientRect() {
+    return {
+      top: 0,
+      left: 0,
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+  }
+
+  // follwoing line is not required to work pinning on touch screen
+
+  /* pinType: document.querySelector(".smooth-scroll").style.transform
+    ? "transform"
+    : "fixed"*/
+});
+
+ 
+
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+ScrollTrigger.refresh();
+
+}
+locomotiveAnimation()
+
+function navbarAnimation(){
+  gsap.to("#nav-part1 svg",{
+    transform:"translateY(-100%)",
+    scrollTrigger:{
+      trigger:"#page1",
+      scroller:"#main",
+      start:"top 0",
+      end:"top -5%",
+      scrub:true,
+    }
+  })
+  
+  gsap.to("#nav-part2 #links",{
+    transform:"translateY(-100%)",
+    opacity:0,
+    scrollTrigger:{
+      trigger:"#page1",
+      scroller:"#main",
+      start:"top 0",
+      end:"top -5%",
+      scrub:true,
+    }
+  })
+}
+navbarAnimation()
 
 function videoconAnimation(){
   var videocon = document.querySelector("#video-container")
@@ -50,3 +122,42 @@ function loadingAnimation(){
   })
 }
 loadingAnimation()
+
+
+
+function cursorAnimation(){
+  document.addEventListener("mousemove", function(dets){
+    gsap.to("#cursor",{
+      left:dets.x,
+      top:dets.y
+    })
+  })
+  
+  // document.querySelector("#child1").addEventListener("mouseenter",function(){
+  //   gsap.to("#cursor",{
+  //     transform: 'translate(-50%, -50%) scale(1)'
+  //   })
+  // })
+  
+  // document.querySelector("#child1").addEventListener("mouseleave",function(){
+  //   gsap.to("#cursor",{
+  //     transform: 'translate(-50%, -50%) scale(0)'
+  //   })
+  // })
+  
+  var a = document.querySelectorAll(".child")
+  a.forEach(function(elem){
+    elem.addEventListener("mouseenter", function(){
+      gsap.to("#cursor",{
+        transform: 'translate(-50%, -50%) scale(1)'
+      })
+    })
+  
+    elem.addEventListener("mouseleave", function(){
+      gsap.to("#cursor",{
+        transform: 'translate(-50%, -50%) scale(0)'
+      })
+    })
+  })
+}
+cursorAnimation()
